@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.parseXML demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  
+ 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script>
+        $(function() {
+          
+          
+          var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
+          
+          var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions?key=WTmBgVrTvaFuhWyVTULxuYPB8&rt=49,49B,152,&stpid=8417,8195,12527,12569&format=json";
+          
+          
+          $.ajax({
+              url: apiPassThruUrl,
+              dataType: "json",
+              method: 'GET',
+              data: {"apiEndpoint": apiEndpoint,
+                      "key" : "WTmBgVrTvaFuhWyVTULxuYPB8",
+                      "format":"json"
+                      
+              }
+            }).done (function (data) {
+              console.log(data);
+              $("body").append("<h1>Bus Predictions</h1>"+ "<hr>");
+             
+              $.each(data["bustime-response"]["prd"], function(i,v) {
+                  $("body").append("<h2>Predictions:</h2>"  +
+                  "Route #: "+  v.rt + "<br>"+ 
+                  "Date & Time: "+ v.tmstmp + "<br>" +
+                   "Stop: " +v.stpnm + "<br>" +  
+                  "Approximate Time Arrival: "+ v.prdctdn + " min"+ "<br>"+
+                  "Prediction: "+ v.prdctdn+ "<br>" + "<hr>");
+                
+              })
+
+            });
+        });
+            
+  
+</script>
+ 
+</body>
+</html>
