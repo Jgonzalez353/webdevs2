@@ -1,0 +1,13 @@
+{
+  "name": "Bus Predictions",
+  "short_name": "CTA",
+  "icons": [{
+    "src": "http://www.transitchicago.com/assets/1/icons/icon_traintrackerbold.gif",
+      "sizes": "128x128",
+      "type": "image/gif"
+    }],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#3E4EB8",
+  "theme_color": "#2F3BA2"
+}
